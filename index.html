@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bike Rider Animation</title>
+</head>
+
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #f0f0f0;
+    }
+
+    .map-container {
+        position: relative;
+        width: 80%;
+        height: 400px;
+        background-color: #c2e59c;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        background-image: url(pngwing.com.png);
+        background-size: cover;
+    }
+
+    .start-point,
+    .end-point {
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        text-align: center;
+        color: #fff;
+    }
+
+    .start-point {
+        top: 10px;
+        left: 20px;
+        background-image: url(—Pngtree—small\ restaurant\ building\ vector\ with_5484646.png);
+    }
+
+    .end-point {
+        bottom: 20px;
+        right: 20px;
+        background-image: url(enterprise.png);
+    }
+
+    #bike-rider {
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        background-image: url(—Pngtree—cartoon\ delivery\ man_876933.png);
+        background-size: contain;
+        background-repeat: no-repeat;
+        transition: transform 3s ease-in-out;
+    }
+
+    /* Straight route line */
+    #route-line {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+    }
+
+    .straight-line {
+        stroke: #ff0000;
+        stroke-width: 3;
+        fill: none;
+    }
+</style>
+
+<body>
+    <div class="map-container">
+        <div class="start-point"></div>
+        <div class="end-point"></div>
+        <svg id="route-line">
+            <!-- Adjust the path to be a straight line -->
+            <path class="straight-line" d="M70,70 L980,330" />
+            <!-- Replace the circle elements with images -->
+            <image href="locationMark.png" x="55" y="45" width="30" height="30" />
+            <image href="locationMark.png" x="965" y="300" width="30" height="30" />
+        </svg>
+        <div id="bike-rider"></div>
+    </div>
+
+    <script>
+        window.onload = function () {
+            const bikeRider = document.getElementById('bike-rider');
+            const straightLine = document.querySelector('.straight-line');
+            const length = straightLine.getTotalLength();
+
+            // Start the animation
+            bikeRider.style.transition = 'none';
+            bikeRider.style.transform = 'translate(0, 0)';
+
+            function animateBikeRider() {
+                bikeRider.style.transition = 'transform 20s ease-in-out';
+                bikeRider.style.transform = `translate(950px, 320px)`;  // Adjusted to align with the ending image
+
+                straightLine.style.transition = 'stroke-dasharray 5s ease-in-out';
+                straightLine.style.strokeDasharray = `${length} ${length}`;
+                straightLine.style.strokeDashoffset = length;
+
+                straightLine.getBoundingClientRect();  // Trigger a reflow to ensure the animation starts
+                straightLine.style.strokeDashoffset = '0';
+            }
+
+            animateBikeRider();
+        };
+    </script>
+</body>
+
+</html>
