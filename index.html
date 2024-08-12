@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bike Rider Animation</title>
+</head>
+
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #f0f0f0;
+    }
+
+    .map-container {
+        position: relative;
+        width: 90%;
+        height: 400px;
+        background-color: #c2e59c;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        background-image: url(pngwing.com.png);
+        background-size: cover;
+    }
+
+    .start-point,
+    .end-point {
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        text-align: center;
+        color: #fff;
+    }
+
+    .start-point {
+        top: 43px;
+        left: 35px;
+        background-image: url(—Pngtree—small\ restaurant\ building\ vector\ with_5484646.png);
+    }
+
+    .end-point {
+        top: 98px;
+        right: 17px;
+        background-image: url(enterprise.png);
+    }
+
+    #bike-rider {
+        position: absolute;
+        width: 60px;
+        height: 60px;
+        background-image: url(—Pngtree—cartoon\ delivery\ man_876933.png);
+        background-size: contain;
+        background-repeat: no-repeat;
+        animation: ride 30s linear forwards;
+        top: -80px;
+    }
+
+    /* Road path instead of a line */
+    #road-path {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+    }
+
+    .road {
+        stroke: transparent;
+        stroke-width: 3;
+        fill: none;
+    }
+
+    .road-image {
+        position: absolute;
+    }
+
+    /* Keyframes for moving the bike rider along the path */
+    @keyframes ride {
+        0% {
+            transform: translate(100px, 120px) rotate(0deg);
+        }
+
+        10% {
+            transform: translate(170px, 120px) rotate(15deg);
+        }
+
+        20% {
+            transform: translate(280px, 220px) rotate(40deg);
+        }
+
+        30% {
+            transform: translate(370px, 160px) rotate(-20deg);
+        }
+
+        40% {
+            transform: translate(460px, 200px) rotate(20deg);
+        }
+
+        50% {
+            transform: translate(550px, 195px) rotate(10deg);
+        }
+
+        60% {
+            transform: translate(640px, 120px) rotate(-25deg);
+        }
+
+        70% {
+            transform: translate(730px, 100px) rotate(-20deg);
+        }
+
+        80% {
+            transform: translate(820px, 160px) rotate(25deg);
+        }
+
+        90% {
+            transform: translate(910px, 196px) rotate(10deg);
+        }
+
+        100% {
+            transform: translate(1060px, 210px) rotate(0deg);
+        }
+    }
+</style>
+
+<body>
+    <div class="map-container">
+        <div class="start-point"></div>
+        <div class="end-point"></div>
+        <svg id="road-path" viewBox="0 0 1200 400">
+            <image class="road-image" href="road1.png" x="100" y="0" />
+            <image href="locationMark.png" x="95" y="70" width="30" height="30" />
+            <image href="locationMark.png" x="1075" y="140" width="30" height="30" />
+        </svg>
+        <div id="bike-rider"></div>
+    </div>
+</body>
+
+</html>
